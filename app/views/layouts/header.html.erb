@@ -1,0 +1,17 @@
+<div class="masthead">
+  <h3 class="text-muted"><%= Rails.application.class.parent_name %></h3>
+  <ul class="nav nav-justified">
+    <li class="active"><a href="#">Home</a></li>
+    <li><a href="#">Shops</a></li>
+    <li><a href="#">Farms</a></li>
+    <li><a href="#">Employees</a></li>
+    <li><a href="<%= accounts_path %>">Accounts</a></li>
+    <li><a href="#">Location</a></li>
+    <li><a href="#">Contact</a></li>
+    <% if user_signed_in? %>
+      <li><a href="<%= edit_user_registration_path %>"><%= current_user.email %></a></li>
+      <li><a href="<%= destroy_user_session_path %>">LogOut</a></li>
+    <% end %>
+  </ul>
+</div>
+  
