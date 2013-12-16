@@ -1,7 +1,23 @@
-<%= text_field_tag 'datepicker' %>dsdf
-
-<script>
-	$(function() {
-		$( "#datepicker" ).datepicker();
-	});
-</script>
+<html ng-app="hajisApp">
+<head>
+  <script src="app/app.js"></script>
+</head>
+<%= render partial: 'account/shared/calculation_form'%>
+<br>
+	<table cellpadding="0" cellspacing="0" border="0" class="display dataTables_wrapper" id="accounts" role="grid">
+		<thead>
+			<tr>
+				<th>Email</th>
+				<th>Last Signed In IP</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @users.each do |user| %>
+				<tr>
+					<td><%= user.email %></td>
+					<td><%= user.last_sign_in_ip %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</html>

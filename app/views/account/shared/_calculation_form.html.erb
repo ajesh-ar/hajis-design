@@ -1,0 +1,13 @@
+<div ng-controller="calculationCtrl">
+	<div id='calculationRow'>
+		<div class='calculationForm' style='border: 1px solid;'>
+			Date: <%= text_field_tag 'calender_date' %>
+			Number of Boxes: <input ng-model="noOfBoxes" ng-model-onblur ng-change='calculateAmount();'>
+			Average Rate: <input ng-model="averageRate" ng-model-onblur ng-change='calculateAmount();'>
+			Result: {{result}}
+			{{userEmail}}
+			<button>Save</button>
+		</div>
+	</div>
+	<!-- <button class='AddButton' ng-click='AddForm();'>Add</button> -->
+</div>

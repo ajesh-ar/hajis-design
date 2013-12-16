@@ -6,6 +6,7 @@ Hajis::Application.routes.draw do
 
   # Sample of regular route:
     match 'accounts' => 'account#index'
+    get '/user_details' => 'account#user_details'
   # Keep in mind you can assign values other than :controller and :action
 
   # Sample of named route:
