@@ -5,8 +5,11 @@ Hajis::Application.routes.draw do
   # first created -> highest priority.
 
   # Sample of regular route:
-    match 'accounts' => 'account#index'
-    get '/user_details' => 'account#user_details'
+
+  match 'accounts' => 'account#index'
+  post '/customer_amount/calculate' => 'account#calculate'
+  put '/customer_account/edit/:id' => 'account#edit'
+  
   # Keep in mind you can assign values other than :controller and :action
 
   # Sample of named route:

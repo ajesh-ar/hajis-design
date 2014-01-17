@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  customer_id: 1
+  shed_kg: 
+  vehicle_kg: 
+  rate: 
+  feed_amount: 
+  amount: 
+  balance: 
+  date: 
+  vehicle_boxes: 1
+
+two:
+  customer_id: 1
+  shed_kg: 
+  vehicle_kg: 
+  rate: 
+  feed_amount: 
+  amount: 
+  balance: 
+  date: 
+  vehicle_boxes: 1

@@ -1,12 +1,22 @@
-<div ng-controller="calculationCtrl">
+<div ng-controller="calculationCtrl" class='ngControllerClass'>
 	<div id='calculationRow'>
 		<div class='calculationForm' style='border: 1px solid;'>
-			Date: <%= text_field_tag 'calender_date' %>
-			Number of Boxes: <input ng-model="noOfBoxes" ng-model-onblur ng-change='calculateAmount();'>
-			Average Rate: <input ng-model="averageRate" ng-model-onblur ng-change='calculateAmount();'>
-			Result: {{result}}
-			{{userEmail}}
-			<button>Save</button>
+			<form name='calculation_form' class='calculation_class'>
+				Date: <%= text_field_tag 'sales[calender_date]' %>
+				Customer: <%= select_tag "sales[customer_id]", options_from_collection_for_select(Customer.all, "id", "email") %>
+				<br>
+				Number of Boxes: <input ng-model="noOfBoxes" ng-model-onblur name ='sales[noOfBoxes]' ng-change='calculateAmount();'>
+				Average Rate: <input ng-model="averageRate" name ='sales[averageRate]' ng-model-onblur ng-change='calculateAmount();'>
+				Shed(kg): <input ng-model="shedKg" name ='sales[shedKg]' ng-model-onblur ng-change='calculateAmount();'>
+				Vehicle(kg): <input ng-model="vehicleKg" name ='sales[vehicleKg]' ng-model-onblur ng-change='calculateAmount();'>
+				Feed Amount(Rs): <input name ='sales[feedAmount]' ng-model="feedAmount" ng-model-onblur ng-change='calculateAmount();'>
+				Paid Amount(Rs): <input name ='sales[paidAmount]' ng-model="paidAmount" ng-model-onblur ng-change='calculateAmount();'>
+			</form>
+			AMOUNT: {{result}}
+			<br>
+			<span class='addButtonSpan'>
+				<button ng-click='updateSalesToServer();'>ADD</button>	
+			</span>
 		</div>
 	</div>
 	<!-- <button class='AddButton' ng-click='AddForm();'>Add</button> -->
