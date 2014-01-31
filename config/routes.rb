@@ -7,8 +7,10 @@ Hajis::Application.routes.draw do
   # Sample of regular route:
 
   match 'accounts' => 'account#index'
+  match 'creditdebit' => 'credit_debit#index'
   post '/customer_amount/calculate' => 'account#calculate'
   put '/customer_account/edit/:id' => 'account#edit'
+  put '/customer_account/update/:id' => 'account#update'
   
   # Keep in mind you can assign values other than :controller and :action
 

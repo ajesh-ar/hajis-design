@@ -3,6 +3,7 @@ var hajisApp = angular.module('hajisApp', []);
 
 hajisApp.controller('calculationCtrl', function ($scope, $http) {
 	$scope.calculateAmount = function() {
+		$scope.calculated_amnt = ((((parseFloat($scope.shedKg) + parseFloat($scope.vehicleKg))*parseFloat($scope.averageRate)) + parseFloat($scope.feedAmount)));
 		$scope.result = ((((parseFloat($scope.shedKg) + parseFloat($scope.vehicleKg))*parseFloat($scope.averageRate)) + parseFloat($scope.feedAmount)) - parseFloat($scope.paidAmount));
 	};
 
@@ -15,9 +16,5 @@ hajisApp.controller('calculationCtrl', function ($scope, $http) {
 		}).success(function(data) {
 			console.log(data);
 		});
-	};
-
-	$scope.updateExistingSalesToServer = function() {
-		console.log($scope);
 	};
 });

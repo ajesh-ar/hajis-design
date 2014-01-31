@@ -3,6 +3,7 @@
 		<div class='calculationForm' style='border: 1px solid;'>
 			<form name='calculation_form' class='calculation_class'>
 				Date: <%= text_field_tag 'sales[calender_date]' %>
+				<%= hidden_field_tag 'sales[customer_account_id]' %>
 				Customer: <%= select_tag "sales[customer_id]", options_from_collection_for_select(Customer.all, "id", "email") %>
 				<br>
 				Number of Boxes: <input ng-model="noOfBoxes" ng-model-onblur name ='sales[noOfBoxes]' ng-change='calculateAmount();'>
@@ -12,7 +13,8 @@
 				Feed Amount(Rs): <input name ='sales[feedAmount]' ng-model="feedAmount" ng-model-onblur ng-change='calculateAmount();'>
 				Paid Amount(Rs): <input name ='sales[paidAmount]' ng-model="paidAmount" ng-model-onblur ng-change='calculateAmount();'>
 			</form>
-			AMOUNT: {{result}}
+			BALANCE : {{result}} <br>
+			AMOUNT : {{calculated_amnt}}
 			<br>
 			<span class='addButtonSpan'>
 				<button ng-click='updateSalesToServer();'>ADD</button>	
