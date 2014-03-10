@@ -6,11 +6,12 @@
     <li><a href="#">Farms</a></li>
     <li><a href="#">Employees</a></li>
     <li><a href="<%= accounts_path %>">Sales</a></li>
-    <li><a href="<%= creditdebit_path %>">Accounts</a></li>
+    <li><a href="<%= credit_debit_index_path %>">Accounts</a></li>
     <li><a href="#">Location</a></li>
     <li><a href="#">Contact</a></li>
     <% if user_signed_in? %>
-      <li><a href="<%= edit_user_registration_path %>"><%= current_user.email %></a></li>
+    <% manage_url = current_user.is_admin? ? "/accounts/manage" : edit_user_registration_path %>
+      <li><a href="<%= manage_url %>"><%= current_user.email %></a></li>
       <li><a href="<%= destroy_user_session_path %>">LogOut</a></li>
     <% end %>
   </ul>

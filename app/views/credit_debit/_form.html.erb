@@ -1,0 +1,19 @@
+<%= form_tag(credit_debit_index_path) do %>
+	<div>
+		<span>
+			Email :
+		</span>
+		<span>
+			<%= select_tag('customer[id]', options_from_collection_for_select(@customers, "id", "email")) %>
+		</span>
+	</div>
+	<div>
+		<span>
+			Amount :
+		</span>
+		<span>
+			<%= text_field_tag 'customer[amount]' %>
+		</span>
+	</div>
+	<%= submit_tag 'Submit' %>
+<% end %>

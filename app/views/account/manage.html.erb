@@ -1,0 +1,22 @@
+<table cellpadding="0" cellspacing="0" border="0" class="display dataTables_wrapper" id="accounts" role="grid">
+	<thead>
+		<tr>
+			<th>Resource Type</th>
+			<th>Event</th>
+			<th>Who Did?</th>
+			<th>Change</th>
+			<!-- <th>Date</th> -->
+		</tr>
+	</thead>
+	<tbody>
+		<% @customer_versions.each do |version| %>
+			<tr>
+				<td><%= version.item_type %></td>
+				<td><%= version.event %></td>
+				<td><%= version.whodunnit %></td>
+				<td><%= version.object.match(/old_balance: (.*)/)[0] %></td>
+				<!-- <td><%= version.object.match(/updated_at: (.*)/)[0] %></td> -->
+			</tr>
+		<% end %>
+	</tbody>
+</table>

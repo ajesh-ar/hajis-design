@@ -4,6 +4,10 @@ class AccountController < ApplicationController
 		@customer_amounts = CustomerAccount.includes(:customer)
 	end
 
+	def manage
+		@customer_versions = Customer.first.versions
+	end
+
 	def user_details
 		render json: User.first
 	end

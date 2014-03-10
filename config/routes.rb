@@ -5,9 +5,9 @@ Hajis::Application.routes.draw do
   # first created -> highest priority.
 
   # Sample of regular route:
-
+  resources :credit_debit
   match 'accounts' => 'account#index'
-  match 'creditdebit' => 'credit_debit#index'
+  match '/accounts/manage' => 'account#manage'
   post '/customer_amount/calculate' => 'account#calculate'
   put '/customer_account/edit/:id' => 'account#edit'
   put '/customer_account/update/:id' => 'account#update'
