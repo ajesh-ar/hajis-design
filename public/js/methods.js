@@ -2,9 +2,16 @@ $(function() {
 
 	$('#accounts').dataTable( {
 		"bJQueryUI": true,
-		"sPaginationType": "full_numbers"
+		"sPaginationType": "full_numbers",
+		// bProcessing: true,
+		// bServerSide: true,
+		// sAjaxSource: $('#accounts').data('source'),
+		// sAjaxDataProp: "",
+		iDisplayLength: 5
 	} );
-    $( "#sales_calender_date" ).datepicker({dateFormat: 'dd/mm/yy'})
+    $( "#sales_calender_date" ).datepicker({
+    	dateFormat: 'dd/mm/yy'
+    })
   });
 
 var editCustomerAccounts = function(customer_account_id) {
@@ -25,15 +32,16 @@ var populateEditForm = function(resp) {
 	    scope.feedAmount = resp.feed_amount;
 	    scope.paidAmount = resp.amount;
 	    scope.shedKg = resp.shed_kg;
-	    scope.averageRate = resp.rate;
 	    scope.noOfBoxes = resp.vehicle_boxes;
+	    scope.calenderDate = resp.date;
+	    scope.customerId = resp.customer_id;
 	    scope.calculateAmount();
 	});
 	updateUI(resp.id);
 };
 
 var updateUI = function(sales_customer_account_id) {
-	$('.addButtonSpan').html("<button class='updateButton' onClick='updateSales();'>UPDATE</button>");
+	$('.addButtonSpan').html("<button class='updateButton btn btn-primary add-btn' onClick='updateSales();' style='margin-left: 46%;'>UPDATE</button>");
 	$('#sales_customer_account_id').val(sales_customer_account_id);
 };
 

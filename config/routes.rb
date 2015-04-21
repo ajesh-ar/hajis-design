@@ -11,6 +11,7 @@ Hajis::Application.routes.draw do
   post '/customer_amount/calculate' => 'account#calculate'
   put '/customer_account/edit/:id' => 'account#edit'
   put '/customer_account/update/:id' => 'account#update'
+  get '/customer_amount/ajax_source' => 'account#ajax_source'
   
   # Keep in mind you can assign values other than :controller and :action
 

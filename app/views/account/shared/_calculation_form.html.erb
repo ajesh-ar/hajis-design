@@ -1,28 +1,118 @@
+<style type="text/css">
+	.label {
+		width: 31%;
+		float: left;
+		margin-right: 10px;
+		padding: 6px;
+		margin-bottom: 10px;
+	}
+	form {
+		width: 100%;
+		float: left;
+		padding: 10px;
+	}
+	.text_box {
+		float: left;
+	}
+	.clear {
+		clear: both;
+	}
+
+	.left, .right {
+		width: 40%;
+		float: left;
+	}
+	.right {
+		float: right;
+	}
+	.add-btn {
+		padding: 2%;
+	}
+	.amt-box {
+		font-family: monospace;
+		font-size: 20px;
+		padding: 10px;
+	}
+	.r-wrp {
+		padding: 20px;
+		font-size: 30px;
+		font-weight: bold;
+	}
+	#sales_customer_id {
+		width: 210px;
+	}
+	input[type='text'] {
+		float: right;
+		height: auto;
+	}
+	.add-btn {
+		margin-left: 42%;
+	}
+</style>
 <div ng-controller="calculationCtrl" class='ngControllerClass'>
 	<div id='calculationRow'>
 		<div class='calculationForm' style='border: 1px solid;'>
 			<form name='calculation_form' class='calculation_class'>
-				Date: <%= text_field_tag 'sales[calender_date]' %>
 				<%= hidden_field_tag 'sales[customer_account_id]' %>
-				Customer: <%= select_tag "sales[customer_id]", options_from_collection_for_select(Customer.all, "id", "email") %>
-				<br>
-				Number of Boxes: <input ng-model="noOfBoxes" ng-model-onblur name ='sales[noOfBoxes]' ng-change='calculateAmount();'>
-				Average Rate: <input ng-model="averageRate" name ='sales[averageRate]' ng-model-onblur ng-change='calculateAmount();'>
-				Shed(kg): <input ng-model="shedKg" name ='sales[shedKg]' ng-model-onblur ng-change='calculateAmount();'>
-				Vehicle(kg): <input ng-model="vehicleKg" name ='sales[vehicleKg]' ng-model-onblur ng-change='calculateAmount();'>
-				Feed Amount(Rs): <input name ='sales[feedAmount]' ng-model="feedAmount" ng-model-onblur ng-change='calculateAmount();'>
-				Paid Amount(Rs): <input name ='sales[paidAmount]' ng-model="paidAmount" ng-model-onblur ng-change='calculateAmount();'>
+				<div class="left">
+					<span class="label">Date</span>
+					<span class="text_box">
+						<%= text_field_tag 'sales[calender_date]', nil, 'ng-model' => "calenderDate" %>
+					</span>	
+					<div class="clear"></div>
+					<span class="label">Number of Boxes</span>
+					<span class="text_box">
+						<input ng-model="noOfBoxes" ng-model-onblur name ='sales[noOfBoxes]' ng-change='calculateAmount();'>
+					</span>
+					<div class="clear"></div>
+				</div>
+				<div class="right">
+					<span class="label">Customer</span> 
+					<span class="text_box">
+						<%= select_tag "sales[customer_id]", options_from_collection_for_select(Customer.all, "id", "email"), { prompt: 'Select a customer', 'ng-model' => "customerId" } %>
+					</span>	
+					<div class="clear"></div>
+					<span class="label">Average Rate</span>
+					<span class="text_box">
+					<input ng-model="averageRate" name ='sales[averageRate]' ng-model-onblur ng-change='calculateAmount();'>
+				</span>
+				</div>
+				<div class="left">
+					<span class="label">Shed(kg)</span>
+					<span class="text_box">
+						<input ng-model="shedKg" name ='sales[shedKg]' ng-model-onblur ng-change='calculateAmount();'>
+					</span>
+				</div>
+				<div class="right">
+					<span class="label">Vehicle(kg)</span>
+					<span class="text_box">
+					<input ng-model="vehicleKg" name ='sales[vehicleKg]' ng-model-onblur ng-change='calculateAmount();'>
+				</span>
+				</div>
+				<div class="left">
+					<span class="label">Feed Amount(Rs)</span>
+					<span class="text_box">
+						<input name ='sales[feedAmount]' ng-model="feedAmount" ng-model-onblur ng-change='calculateAmount();'>
+					</span>
+				</div>
+				<div class="right">
+					<span class="label">Paid Amount(Rs)</span>
+					<span class="text_box">
+						<input name ='sales[paidAmount]' ng-model="paidAmount" ng-model-onblur ng-change='calculateAmount();'>
+					</span>
+				</div>
 			</form>
-			BALANCE : {{result}} <br>
-			AMOUNT : {{calculated_amnt}}
-			<br>
-			<span class='addButtonSpan'>
-				<button ng-click='updateSalesToServer();'>ADD</button>	
-			</span>
-			<span>
-				<%= link_to 'refresh', accounts_path %>
-			</span>
+			<div class='action-box'>
+				<span class='addButtonSpan'>
+					<button ng-click='updateSalesToServer();' class='btn btn-primary add-btn'>SAVE
+					</button>
+				</span>
+				<%= link_to 'Refresh', accounts_path %>
+				<div>
+					<div class='amt-box'>BALANCE AMOUNT:</div><span class='r-wrp'>{{result}}</span>
+					<div class='amt-box'>AMOUNT:</div><span class='r-wrp'>{{calculated_amnt}}</span>
+				</div>
+			</div>
 		</div>
 	</div>
-	<!-- <button class='AddButton' ng-click='AddForm();'>Add</button> -->
 </div>
