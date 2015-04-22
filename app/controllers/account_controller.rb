@@ -1,12 +1,10 @@
 class AccountController < ApplicationController
 
 	def index
-		@customer_amounts = CustomerAccount.includes(:customer)
-
-		# respond_to do |format|
-  #     format.html
-  #     format.json { render json: CustomerAccountDatatable.new(view_context) }
-  #   end
+		respond_to do |format|
+      format.html
+      format.json { render json: CustomerAccountDatatable.new(view_context) }
+    end
 	end
 
 	def manage
@@ -35,6 +33,7 @@ class AccountController < ApplicationController
 	def edit
 		resp = CustomerAccount.find(params[:id]) if params[:id].present?
 		out_put_hash = {
+			id: resp.id,
 			rate: resp.rate,
 	    vehicle_kg: resp.vehicle_kg,
 	    feed_amount: resp.feed_amount,

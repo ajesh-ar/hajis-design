@@ -9,14 +9,5 @@
 		</tr>
 	</thead>
 	<tbody>
-		<% customer_amounts.each do |customer_amount| %>
-			<tr>
-				<td><%= customer_amount.customer.email %></td>
-				<td><%= customer_amount.amount %></td>
-				<td><%= customer_amount.balance_amount %></td>
-				<td><%= customer_amount.date %></td>
-				<td><a href='javascript:void(0);' onClick='editCustomerAccounts(<%= customer_amount.id %>);'>Edit</a></td>
-			</tr>
-		<% end %>
 	</tbody>
 </table>

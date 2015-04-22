@@ -1,19 +1,23 @@
 class CustomerAccountDatatable < AjaxDatatablesRails::Base
 
-  # uncomment the appropriate paginator module,
-  # depending on gems available in your project.
-  include AjaxDatatablesRails::Extensions::Kaminari
-  # include AjaxDatatablesRails::Extensions::WillPaginate
-  # include AjaxDatatablesRails::Extensions::SimplePaginator
-
   def sortable_columns
     # Declare strings in this format: ModelName.column_name
-    @sortable_columns ||= []
+    @sortable_columns ||= [
+      'CustomerAccount.customer_id',
+      'CustomerAccount.amount',
+      'CustomerAccount.balance_amount',
+      'CustomerAccount.date'
+    ]
   end
 
   def searchable_columns
     # Declare strings in this format: ModelName.column_name
-    @searchable_columns ||= []
+    @searchable_columns ||= [
+      'Customer.email',
+      'CustomerAccount.amount',
+      'CustomerAccount.balance_amount',
+      'CustomerAccount.date'
+    ]
   end
 
   private
@@ -31,7 +35,7 @@ class CustomerAccountDatatable < AjaxDatatablesRails::Base
   end
 
   def get_raw_records
-    CustomerAccount.includes(:customer)
+    CustomerAccount.includes(:customer).scoped
   end
 
   # ==== Insert 'presenter'-like methods below if necessary

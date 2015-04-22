@@ -1,14 +1,21 @@
 $(function() {
 
 	$('#accounts').dataTable( {
-		"bJQueryUI": true,
-		"sPaginationType": "full_numbers",
-		// bProcessing: true,
-		// bServerSide: true,
-		// sAjaxSource: $('#accounts').data('source'),
-		// sAjaxDataProp: "",
-		iDisplayLength: 5
-	} );
+			jQueryUI: true,
+			paginationType: "full_numbers",
+			processing: true,
+			serverSide: true,
+			ajax: $('#accounts').data('source'),
+			iDisplayLength: 5,
+			aoColumns: [
+		                { "bSortable": true },
+		                { "bSortable": true },
+		                { "bSortable": true },
+		                { "bSortable": true },
+		                { "bSortable": false }
+	               ]
+		});
+
     $( "#sales_calender_date" ).datepicker({
     	dateFormat: 'dd/mm/yy'
     })
