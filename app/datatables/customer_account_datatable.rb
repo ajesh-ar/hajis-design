@@ -28,7 +28,7 @@ class CustomerAccountDatatable < AjaxDatatablesRails::Base
         record.customer.email,
         record.amount,
         record.balance_amount,
-        record.date,
+        (record.date ? record.date.strftime('%d/%m/%Y') : nil),
         "<a href='javascript:void(0);' onClick='editCustomerAccounts(#{record.id});'>Edit</a>"
       ]
     end
