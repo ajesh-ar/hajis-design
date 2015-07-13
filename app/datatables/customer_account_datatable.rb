@@ -25,7 +25,7 @@ class CustomerAccountDatatable < AjaxDatatablesRails::Base
   def data
     records.map do |record|
       [
-        record.customer.email,
+        (record.customer.email rescue nil),
         record.amount,
         record.balance_amount,
         (record.date ? record.date.strftime('%d/%m/%Y') : nil),

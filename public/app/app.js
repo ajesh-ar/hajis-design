@@ -8,13 +8,20 @@ hajisApp.controller('calculationCtrl', function ($scope, $http) {
 	};
 
 	$scope.updateSalesToServer = function() {
-		$http({
-			url: '/customer_amount/calculate',
-			method: 'POST',
-			data: $('.calculation_class').serialize(),
-			headers: {'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8'}
-		}).success(function(data) {
-			console.log(data);
-		});
+		var form = $('.calculation_class');
+
+		if(form.valid()) {
+			$http({
+				url: '/customer_amount/calculate',
+				method: 'POST',
+				data: form.serialize(),
+				headers: {
+					'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
+				}
+			}).success(function(data) {
+				console.log(data);
+			});
+		};
+		
 	};
 });

@@ -16,6 +16,11 @@ $(function() {
 	               ]
 		});
 
+		$('#user-profile, #credit-debit-tbl').dataTable({
+			jQueryUI: true,
+			paginationType: "full_numbers"
+		});
+
     $( "#sales_calender_date" ).datepicker({
     	dateFormat: 'dd/mm/yy'
     })

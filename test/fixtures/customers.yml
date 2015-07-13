@@ -1,13 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  address: MyText
-  phone: 1
   email: MyString
-  old: 
+  address: MyString
+  phone: MyString
 
 two:
-  address: MyText
-  phone: 1
   email: MyString
-  old: 
+  address: MyString
+  phone: MyString

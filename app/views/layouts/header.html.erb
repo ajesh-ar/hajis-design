@@ -1,18 +1,38 @@
 <div class="masthead">
   <h3 class="text-muted"><%= Rails.application.class.parent_name %></h3>
   <ul class="nav nav-justified">
-    <li class="active"><a href="#">Home</a></li>
-    <li><a href="#">Shops</a></li>
-    <li><a href="#">Farms</a></li>
-    <li><a href="#">Employees</a></li>
-    <li><a href="<%= accounts_path %>">Sales</a></li>
-    <li><a href="<%= credit_debit_index_path %>">Accounts</a></li>
-    <li><a href="#">Location</a></li>
-    <li><a href="#">Contact</a></li>
+    <%= content_tag :li, class: ('active' if controller_name == 'home') do %>
+      <a href="#">Home</a>
+    <% end %>
+    <%= content_tag :li, class: ('active' if controller_name == 'customers') do %>
+      <a href="<%= customers_path %>">Shops</a>
+    <% end %>
+    <%= content_tag :li, class: ('active' if controller_name == 'farms') do %>
+      <a href="#">Farms</a>
+    <% end %>
+    <%= content_tag :li, class: ('active' if controller_name == 'employees') do %>
+      <a href="#">Employees</a>
+    <% end %>
+    <%= content_tag :li, class: ('active' if (controller_name == 'account' && action_name.eql?('index'))) do %>
+      <a href="<%= accounts_path %>">Sales</a>
+    <% end %>
+    <%= content_tag :li, class: ('active' if controller_name == 'credit_debit') do %>
+      <a href="<%= credit_debit_index_path %>">Accounts</a>
+    <% end %>
+    <%= content_tag :li, class: ('active' if controller_name == 'locations') do %>
+      <a href="#">Location</a>
+    <% end %>
+    <%= content_tag :li, class: ('active' if controller_name == 'contacts') do %>
+      <a href="#">Contact</a>
+    <% end %>
     <% if user_signed_in? %>
-    <% manage_url = current_user.is_admin? ? "/accounts/manage" : edit_user_registration_path %>
-      <li><a href="<%= manage_url %>"><%= current_user.email %></a></li>
-      <li><a href="<%= destroy_user_session_path %>">LogOut</a></li>
+      <% manage_url = current_user.is_admin? ? accounts_manage_path : edit_user_registration_path %>
+      <%= content_tag :li, class: ('active' if (controller_name == 'account' && action_name.eql?('manage'))) do %>
+        <a href="<%= manage_url %>"><%= current_user.email %></a>
+      <% end %>
+      <%= content_tag :li do %>
+        <a href="<%= destroy_user_session_path %>">LogOut</a>
+      <% end %>
     <% end %>
   </ul>
 </div>
