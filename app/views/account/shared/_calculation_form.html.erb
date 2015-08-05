@@ -5,6 +5,7 @@
 		margin-right: 10px;
 		padding: 6px;
 		margin-bottom: 10px;
+		color: #333;
 	}
 	form {
 		width: 100%;
@@ -19,7 +20,7 @@
 	}
 
 	.left, .right {
-		width: 40%;
+		width: 50%;
 		float: left;
 	}
 	.right {
@@ -42,7 +43,7 @@
 		width: 210px;
 	}
 	input[type='text'] {
-		float: right;
+		float: left;
 		height: auto;
 	}
 	.add-btn {
@@ -69,7 +70,7 @@
 				<div class="right">
 					<span class="label">Customer*</span> 
 					<span class="text_box">
-						<%= select_tag "sales[customer_id]", options_from_collection_for_select(Customer.all, "id", "email"), { prompt: 'Select a customer', 'ng-model' => "customerId", required: true } %>
+						<%= select_tag "sales[customer_id]", options_from_collection_for_select(Customer.all, :id, :name), { prompt: 'Select a customer', 'ng-model' => "customerId", required: true } %>
 					</span>	
 					<div class="clear"></div>
 					<span class="label">Average Rate*</span>
@@ -107,7 +108,7 @@
 					<button ng-click='updateSalesToServer();' class='btn btn-primary add-btn'>SAVE
 					</button>
 				</span>
-				<%= link_to 'Refresh', accounts_path %>
+				<%= link_to 'Reset', accounts_path %>
 				<div>
 					<div class='amt-box'>BALANCE AMOUNT:</div><span class='r-wrp'>{{result}}</span>
 					<div class='amt-box'>AMOUNT:</div><span class='r-wrp'>{{calculated_amnt}}</span>

@@ -9,6 +9,7 @@ gem 'mysql2'
 gem 'devise'
 gem 'paper_trail', '~> 3.0.0'
 gem 'gmaps4rails'
+gem 'geocoder'
 
 # Gems used only for assets and not required
 # in production environments by default.

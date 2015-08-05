@@ -1,39 +1,54 @@
-<div class="masthead">
-  <h3 class="text-muted"><%= Rails.application.class.parent_name %></h3>
-  <ul class="nav nav-justified">
-    <%= content_tag :li, class: ('active' if controller_name == 'home') do %>
-      <a href="#">Home</a>
-    <% end %>
-    <%= content_tag :li, class: ('active' if controller_name == 'customers') do %>
-      <a href="<%= customers_path %>">Shops</a>
-    <% end %>
-    <%= content_tag :li, class: ('active' if controller_name == 'farms') do %>
-      <a href="#">Farms</a>
-    <% end %>
-    <%= content_tag :li, class: ('active' if controller_name == 'employees') do %>
-      <a href="#">Employees</a>
-    <% end %>
-    <%= content_tag :li, class: ('active' if (controller_name == 'account' && action_name.eql?('index'))) do %>
-      <a href="<%= accounts_path %>">Sales</a>
-    <% end %>
-    <%= content_tag :li, class: ('active' if controller_name == 'credit_debit') do %>
-      <a href="<%= credit_debit_index_path %>">Accounts</a>
-    <% end %>
-    <%= content_tag :li, class: ('active' if controller_name == 'locations') do %>
-      <a href="#">Location</a>
-    <% end %>
-    <%= content_tag :li, class: ('active' if controller_name == 'contacts') do %>
-      <a href="#">Contact</a>
-    <% end %>
-    <% if user_signed_in? %>
-      <% manage_url = current_user.is_admin? ? accounts_manage_path : edit_user_registration_path %>
-      <%= content_tag :li, class: ('active' if (controller_name == 'account' && action_name.eql?('manage'))) do %>
-        <a href="<%= manage_url %>"><%= current_user.email %></a>
-      <% end %>
-      <%= content_tag :li do %>
-        <a href="<%= destroy_user_session_path %>">LogOut</a>
-      <% end %>
-    <% end %>
-  </ul>
-</div>
-  
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Haji's Farms</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <%= content_tag :li, class: ('active' if controller_name == 'home') do %>
+              <a href="<%= home_index_path %>">Home</a>
+            <% end %>
+            <%= content_tag :li, class: ('active' if controller_name == 'customers') do %>
+              <a href="<%= customers_path %>">Shops</a>
+            <% end %>
+            <%= content_tag :li, class: ('active' if controller_name == 'farms') do %>
+              <a href="<%= farms_path %>">Farms</a>
+            <% end %>
+            <%= content_tag :li, class: ('active' if controller_name == 'employees') do %>
+              <a href="#">Employees</a>
+            <% end %>
+            <%= content_tag :li, class: ('active' if (controller_name == 'account' && action_name.eql?('index'))) do %>
+              <a href="<%= accounts_path %>">Sales</a>
+            <% end %>
+            <%= content_tag :li, class: ('active' if controller_name == 'credit_debit') do %>
+              <a href="<%= credit_debit_index_path %>">Accounts</a>
+            <% end %>
+            <%= content_tag :li, class: ('active' if controller_name == 'locations') do %>
+              <a href="#">Location</a>
+            <% end %>
+            <%= content_tag :li, class: ('active' if controller_name == 'contacts') do %>
+              <a href="#">Contact</a>
+            <% end %>
+            <% if user_signed_in? %>
+              <% manage_url = current_user.is_admin? ? accounts_manage_path : edit_user_registration_path %>
+              <%= content_tag :li, class: ('active' if (controller_name == 'account' && action_name.eql?('manage'))) do %>
+                <a href="<%= manage_url %>"><%= current_user.email %></a>
+              <% end %>
+              <%= content_tag :li do %>
+                <a href="<%= destroy_user_session_path %>">Log Out</a>
+              <% end %>
+            <% end %>
+          </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container -->
+</nav>

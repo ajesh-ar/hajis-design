@@ -1,6 +1,9 @@
 Hajis::Application.routes.draw do
+  resources :farms
+
   resources :customers
 
+  resources :home
 
   devise_for :users
 

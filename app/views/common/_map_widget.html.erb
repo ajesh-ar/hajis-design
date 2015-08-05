@@ -1,0 +1,10 @@
+<script type="text/javascript">
+  var locs = <%=raw @hash.to_json %>,
+      handler = Gmaps.build('Google');
+  handler.buildMap({ internal: { id: 'map' } }, function(){
+    var markers = handler.addMarkers(locs);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+    handler.getMap().setZoom(12);
+  });
+</script>

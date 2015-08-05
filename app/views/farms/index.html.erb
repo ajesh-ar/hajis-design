@@ -1,0 +1,33 @@
+<h3>Farms</h3>
+
+<table class='table table-striped'>
+  <tr>
+    <th>Name</th>
+    <th>Street</th>
+    <th>Place</th>
+    <th>State</th>
+    <th>Country</th>
+    <th>Phone</th>
+    <th></th>
+    <th>Actions</th>
+    <th></th>
+  </tr>
+
+<% @farms.each do |farm| %>
+  <tr>
+    <td><%= farm.name %></td>
+    <td><%= farm.street %></td>
+    <td><%= farm.place %></td>
+    <td><%= farm.state %></td>
+    <td><%= farm.country %></td>
+    <td><%= farm.phone %></td>
+    <td><%= link_to 'Show', farm %></td>
+    <td><%= link_to 'Edit', edit_farm_path(farm) %></td>
+    <td><%= link_to 'Destroy', farm, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Farm', new_farm_path %>

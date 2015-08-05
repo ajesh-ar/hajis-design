@@ -1,31 +1,3 @@
-$(function() {
-
-	$('#accounts').dataTable( {
-			jQueryUI: true,
-			paginationType: "full_numbers",
-			processing: true,
-			serverSide: true,
-			ajax: $('#accounts').data('source'),
-			iDisplayLength: 5,
-			aoColumns: [
-		                { "bSortable": true },
-		                { "bSortable": true },
-		                { "bSortable": true },
-		                { "bSortable": true },
-		                { "bSortable": false }
-	               ]
-		});
-
-		$('#user-profile, #credit-debit-tbl').dataTable({
-			jQueryUI: true,
-			paginationType: "full_numbers"
-		});
-
-    $( "#sales_calender_date" ).datepicker({
-    	dateFormat: 'dd/mm/yy'
-    })
-  });
-
 var editCustomerAccounts = function(customer_account_id) {
 	$.ajax({
 		url : '/customer_account/edit/'+ customer_account_id,
@@ -59,12 +31,13 @@ var updateUI = function(sales_customer_account_id) {
 
 var updateSales = function() {
 	var customer_account_id = $('#sales_customer_account_id').val();
+	
   $.ajax({
 		url : '/customer_account/update/'+ customer_account_id,
 		type : 'PUT',
 		data: $('.calculation_class').serialize(),
 		success : function(data) {
-			console.log(data);
+			$('#accounts').DataTable().ajax.reload();
 		}
 	});
 };

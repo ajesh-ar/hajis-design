@@ -1,0 +1,42 @@
+<div class='col-md-12'>
+  <div class='col-md-6'>
+    <p id="notice"><%= notice %></p>
+  <p>
+    <b>Name:</b>
+    <%= @farm.name %>
+  </p>
+
+  <p>
+    <b>Street:</b>
+    <%= @farm.street %>
+  </p>
+
+  <p>
+    <b>Place:</b>
+    <%= @farm.place %>
+  </p>
+
+  <p>
+    <b>State:</b>
+    <%= @farm.state %>
+  </p>
+
+  <p>
+    <b>Country:</b>
+    <%= @farm.country %>
+  </p>
+
+  <p>
+    <b>Phone:</b>
+    <%= @farm.phone %>
+  </p>
+  </div>
+  <div class='col-md-6'>
+    <div>
+      <div id="map" style='width: 100%; height: 400px;'></div>
+    </div>
+  </div>
+  <%= link_to 'Edit', edit_farm_path(@farm) %> |
+  <%= link_to 'Back', farms_path %>
+</div>
+<%= render 'common/map_widget' %>

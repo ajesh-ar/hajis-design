@@ -1,4 +1,4 @@
-<table cellpadding="0" cellspacing="0" border="0" class="display dataTables_wrapper" id="accounts" role="grid" data-source="<%= accounts_path(format: :json) %>">
+<table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered dataTables_wrapper" id="accounts" role="grid" data-source="<%= accounts_path(format: :json) %>">
 	<thead>
 		<tr>
 			<th>Customer Details</th>
@@ -11,3 +11,24 @@
 	<tbody>
 	</tbody>
 </table>
+<script type="text/javascript">
+	$('#accounts').dataTable( {
+		// jQueryUI: true,
+		paginationType: "full_numbers",
+		processing: true,
+		serverSide: true,
+		ajax: $('#accounts').data('source'),
+		iDisplayLength: 5,
+		aoColumns: [
+	                { "bSortable": true },
+	                { "bSortable": true },
+	                { "bSortable": true },
+	                { "bSortable": true },
+	                { "bSortable": false }
+               ]
+	});
+	
+	$( "#sales_calender_date" ).datepicker({
+  	dateFormat: 'dd/mm/yy'
+  });
+</script>

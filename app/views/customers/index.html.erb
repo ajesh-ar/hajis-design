@@ -1,17 +1,19 @@
-<h1>Listing customers</h1>
+<h3>Customers</h3>
 
-<table>
+<table class='table table-striped'>
   <tr>
+    <th>Name</th>
     <th>Email</th>
     <th>Address</th>
     <th>Phone</th>
     <th></th>
-    <th></th>
+    <th>Actions</th>
     <th></th>
   </tr>
 
 <% @customers.each do |customer| %>
   <tr>
+    <td><%= customer.name %></td>
     <td><%= customer.email %></td>
     <td><%= customer.address %></td>
     <td><%= customer.phone %></td>

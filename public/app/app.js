@@ -19,9 +19,8 @@ hajisApp.controller('calculationCtrl', function ($scope, $http) {
 					'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
 				}
 			}).success(function(data) {
-				console.log(data);
+				$('#accounts').DataTable().ajax.reload();
 			});
 		};
-		
 	};
 });

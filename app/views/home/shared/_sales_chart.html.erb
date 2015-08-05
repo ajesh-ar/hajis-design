@@ -1,0 +1,41 @@
+<div class="col-lg-8">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      Monthly Sales
+    </div>
+    <div class="panel-body">
+      <div id="morris-area-chart"></div>
+    </div>
+  </div>
+</div>
+<% @rails_data = [
+    {
+      period: "2015-08-05",
+      closing_balance: 2
+    },
+    {
+      period: "2015-08-04",
+      closing_balance: 345
+    },
+    {
+      period: "2015-08-03",
+      closing_balance: -123
+    },
+    {
+      period: "2015-08-02",
+      closing_balance: 56
+    }
+] %>
+<script type="text/javascript">
+  var script_data = <%= raw @rails_data.to_json %>;
+  new Morris.Area({
+      element: 'morris-area-chart',
+      data: script_data,
+      xkey: 'period',
+      ykeys: ['closing_balance'],
+      labels: ['Closing Amount'],
+      pointSize: 2,
+      hideHover: 'auto',
+      resize: true
+  });
+</script>

@@ -1,5 +1,14 @@
-<div class="jumbotron">
-	<h1>Marketing stuff!</h1>
-	<p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet.</p>
-	<p><a class="btn btn-lg btn-success" href="#" role="button">Get started today</a></p>
+<div class="row">
+  <%= render partial: 'home/shared/old_balance_wrapper' %>
+</div>
+<!-- /.row -->
+<div class="row">
+  <%= render partial: 'home/shared/sales_chart' %>
+  <!-- /.col-lg-8 -->
+  <div class="col-lg-4">
+    <%= render partial: 'home/shared/notification_panel' %>
+    <%= render partial: 'home/shared/donut_chart' %>
+    <!-- /.panel-footer -->
+  </div>
+  <!-- /.panel .chat-panel -->
 </div>
