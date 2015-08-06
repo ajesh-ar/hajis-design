@@ -9,14 +9,14 @@
 		<% @customers.each do |customer| %>
 			<tr>
 				<td><%= customer.email %></td>
-				<td><%= customer.old_balance %></td>
+				<td><%= customer.old_balance.to_f %></td>
 			</tr>
 		<% end %>
 	</tbody>
 </table>
+<%= link_to 'Add Amount', new_credit_debit_path, class: 'btn btn-default' %>
 <script type="text/javascript">
-$('#credit-debit-tbl').dataTable({
-	// jQueryUI: true,
-	paginationType: "full_numbers"
-});
+	$('#credit-debit-tbl').dataTable({
+		paginationType: "full_numbers"
+	});
 </script>

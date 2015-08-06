@@ -1,19 +1,19 @@
-<%= form_tag(credit_debit_index_path) do %>
-	<div>
-		<span>
-			Email :
-		</span>
-		<span>
-			<%= select_tag('customer[id]', options_from_collection_for_select(@customers, "id", "email")) %>
-		</span>
-	</div>
-	<div>
-		<span>
-			Amount :
-		</span>
-		<span>
-			<%= text_field_tag 'customer[amount]' %>
-		</span>
-	</div>
-	<%= submit_tag 'Submit' %>
-<% end %>
+<div class='panel-body'>
+	<%= form_tag(credit_debit_index_path) do %>
+		<div class='form-group'>
+      <label class="col-sm-2 control-label">Customer</label>
+      <div class="col-xs-4">
+        <%= select_tag('customer[id]', options_from_collection_for_select(@customers, :id, :name)) %>
+      </div>
+    </div>
+    <div class='form-group'>
+      <label class="col-sm-2 control-label">Amount</label>
+      <div class="col-xs-4">
+        <%= text_field_tag 'customer[amount]' %>
+      </div>
+    </div>
+    <div class="actions">
+    	<%= submit_tag 'Submit', class: 'btn btn-default' %>
+    </div>
+	<% end %>
+</div>
