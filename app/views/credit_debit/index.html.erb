@@ -8,7 +8,7 @@
 	<tbody>
 		<% @customers.each do |customer| %>
 			<tr>
-				<td><%= customer.email %></td>
+				<td><%= customer.name %></td>
 				<td><%= customer.old_balance.to_f %></td>
 			</tr>
 		<% end %>

@@ -3,6 +3,8 @@
   <script src="app/app.js"></script>
 </head>
 	<%= render partial: 'account/shared/calculation_form'%>
-	<br>
+	<br/>
 	<%= render :partial => 'account/shared/calculation_account', :locals => {:customer_amounts => @customer_amounts} %>
+  <br/>
+  <%= link_to 'Export as PDF', accounts_path(format: :pdf), class: 'btn btn-primary pull-right', target: '_blank' %>
 </html>

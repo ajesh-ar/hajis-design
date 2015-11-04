@@ -24,6 +24,8 @@ end
 gem 'jquery-datatables-rails'
 gem 'ajax-datatables-rails'
 gem 'jquery-rails'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

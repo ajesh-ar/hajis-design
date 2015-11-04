@@ -13,7 +13,7 @@ class CustomerAccountDatatable < AjaxDatatablesRails::Base
   def searchable_columns
     # Declare strings in this format: ModelName.column_name
     @searchable_columns ||= [
-      'Customer.email',
+      'Customer.name',
       'CustomerAccount.amount',
       'CustomerAccount.balance_amount',
       'CustomerAccount.date'
@@ -25,7 +25,7 @@ class CustomerAccountDatatable < AjaxDatatablesRails::Base
   def data
     records.map do |record|
       [
-        (record.customer.email rescue nil),
+        (record.customer.name rescue 'Not entered'),
         record.amount,
         record.balance_amount,
         (record.date ? record.date.strftime('%d/%m/%Y') : nil),

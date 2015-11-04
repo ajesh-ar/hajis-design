@@ -1,0 +1,23 @@
+<% CustomerAccount.includes(:customer).group_by { |g| g[:date] }.each do |k, v| -%>
+  <h3><%= k.to_date.strftime('%d/%m/%Y') -%></h3>
+  <table border='1' style='width: 100%;'>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Customer Details</th>
+        <th>Amount</th>
+        <th>Balance Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% v.each do |customer_account| -%>
+        <tr>
+          <th style='font-weight: normal;'><%= customer_account.try(:date).strftime('%d/%m/%Y') -%></th>
+          <th style='font-weight: normal;'><%= customer_account.try(:customer).name -%></th>
+          <th style='font-weight: normal;'><%= customer_account.try(:amount) -%></th>
+          <th style='font-weight: normal;'><%= customer_account.try(:balance_amount) -%></th>
+        </tr>
+      <% end -%>
+    </tbody>
+  </table>
+<% end -%>

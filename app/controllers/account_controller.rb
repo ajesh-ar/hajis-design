@@ -4,6 +4,10 @@ class AccountController < ApplicationController
 		respond_to do |format|
       format.html
       format.json { render json: CustomerAccountDatatable.new(view_context) }
+      format.pdf { render pdf: "sales_report",
+     		template: "account/index",
+       	encoding: "UTF-8"
+     	}
     end
 	end
 
