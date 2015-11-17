@@ -35,6 +35,12 @@
         <%= f.text_field :phone, class: 'form-control', placeholder: 'Phone' %>
       </div>
     </div>
+    <div class='form-group'>
+      <label class="col-sm-2 control-label"><%= f.label :current_balance %></label>
+      <div class="col-xs-4">
+        <%= f.number_field :current_balance, class: 'form-control', placeholder: 'Current Balance' %>
+      </div>
+    </div>
     <div class="actions">
       <%= f.submit 'Save', class: 'btn btn-default' %>
     </div>

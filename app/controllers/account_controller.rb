@@ -81,6 +81,6 @@ class AccountController < ApplicationController
 
 	def update_balance_amount(customer_account)
 		customer_current_balance = CustomerAccount.where(customer_id: customer_account.customer_id).all.map(&:balance_amount).sum
-		customer_account.customer.update_attribute('old_balance', customer_current_balance)
+		customer_account.customer.update_attribute('old_balance', (customer_current_balance + customer_account.customer.current_balance))
 	end
 end
