@@ -3,7 +3,6 @@
     <% if @customer.errors.any? %>
       <div id="error_explanation" class='alert alert-danger' role='alert'>
         <h2><%= pluralize(@customer.errors.count, "error") %> prohibited this customer from being saved:</h2>
-
         <ul>
         <% @customer.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
@@ -35,10 +34,11 @@
         <%= f.text_field :phone, class: 'form-control', placeholder: 'Phone' %>
       </div>
     </div>
+    <% disabled_status = f.object.new_record? ? false : true -%>
     <div class='form-group'>
-      <label class="col-sm-2 control-label"><%= f.label :current_balance %></label>
+      <label class="col-sm-2 control-label"><%= f.label :current_balance, 'Initial Balance' %></label>
       <div class="col-xs-4">
-        <%= f.number_field :current_balance, class: 'form-control', placeholder: 'Current Balance' %>
+        <%= f.number_field :current_balance, class: 'form-control', placeholder: 'Initial Balance', disabled: disabled_status %>
       </div>
     </div>
     <div class="actions">

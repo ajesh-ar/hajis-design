@@ -13,9 +13,10 @@ class HomeController < ApplicationController
 															{
 																date: k,
 																amount: v.map(&:amount).sum,
-																balance: v.map(&:balance_amount).sum
+																balance: v.map(&:balance_amount).sum,
+																weight_loss: (v.map(&:shed_kg).sum - v.map(&:vehicle_kg).sum)
 															}
 													}
-			@rails_farm_data = Farm.all.map { |m| { label: m.name, value: m.distance_to_display } }
+			@rails_farm_data = Farm.all.map { |m| { label: m.display_name, value: m.distance_to_display } }
 		end
 end

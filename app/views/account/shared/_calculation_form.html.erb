@@ -27,7 +27,7 @@
 		float: right;
 	}
 	.add-btn {
-		padding: 2%;
+		padding: 1%;
 	}
 	.amt-box {
 		font-family: monospace;
@@ -59,7 +59,7 @@
 					<span class="label">Date*</span>
 					<span class="text_box">
 						<%= text_field_tag 'sales[calender_date]', nil, 'ng-model' => "calenderDate", required: true %>
-					</span>	
+					</span>
 					<div class="clear"></div>
 					<span class="label">Number of Boxes*</span>
 					<span class="text_box">
@@ -68,10 +68,10 @@
 					<div class="clear"></div>
 				</div>
 				<div class="right">
-					<span class="label">Customer*</span> 
+					<span class="label">Customer*</span>
 					<span class="text_box">
 						<%= select_tag "sales[customer_id]", options_from_collection_for_select(Customer.all, :id, :name), { prompt: 'Select a customer', 'ng-model' => "customerId", required: true } %>
-					</span>	
+					</span>
 					<div class="clear"></div>
 					<span class="label">Average Rate*</span>
 					<span class="text_box">
