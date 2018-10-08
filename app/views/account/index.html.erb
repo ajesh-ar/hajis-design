@@ -5,6 +5,6 @@
 	<%= render partial: 'account/shared/calculation_form'%>
 	<br/>
 	<%= render :partial => 'account/shared/calculation_account', :locals => {:customer_amounts => @customer_amounts} %>
-  <br/>
-  <%= link_to 'Export as PDF', accounts_path(format: :pdf), class: 'btn btn-primary pull-right', target: '_blank' %>
+	<br />
+	<%= render :partial => 'account/shared/filter_report_form' %>
 </html>

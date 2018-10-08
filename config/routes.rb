@@ -17,6 +17,7 @@ Hajis::Application.routes.draw do
   post '/customer_amount/calculate' => 'account#calculate'
   put '/customer_account/edit/:id' => 'account#edit'
   put '/customer_account/update/:id' => 'account#update'
+  match '/daily_report' => 'account#daily_report'
   
   # Keep in mind you can assign values other than :controller and :action
 

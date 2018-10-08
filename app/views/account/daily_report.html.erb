@@ -1,0 +1,57 @@
+<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Name</th>
+        <th>Vehicle Box</th>
+        <th>Vehicle Kg</th>
+        <th>Rate</th>
+        <th>Feed</th>
+        <th>Amount</th>
+        <th>Paid</th>
+        <th>Balance</th>
+        <th>Old Balance</th>
+        <th>Total Balance</th>
+        <th>Total Paid</th>
+        <th>Total Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @results.each do |record| %>
+        <% old_balance = (record.old_balance.to_f + record.customer.current_balance.to_f) %>
+        <% total_balance = (record.old_balance.to_f + record.customer.current_balance.to_f + record.balance_amount.to_f) %>
+        <% total_paid = (record.total_paid.to_f + record.amount.to_f) %>
+        <% total_amount = (record.total.to_f + record.calculated_amount.to_f + record.customer.current_balance.to_f) %>
+        <tr>
+          <td><%= (record.date ? record.date.strftime('%d/%m/%Y') : nil) %></td>
+          <td><%= (record.customer.name rescue 'Not entered') %></td>
+          <td><%= record.vehicle_boxes %></td>
+          <td><%= record.vehicle_kg.to_f %></td>
+          <td><%= record.rate.to_f %></td>
+          <td><%= record.feed_amount.to_f %></td>
+          <td><%= record.calculated_amount.to_f %></td>
+          <td><%= record.amount.to_f %></td>
+          <td><%= record.balance_amount.to_f %></td>
+          <td><%= old_balance %></td>
+          <td><%= total_balance %></td>
+          <td><%= total_paid %></td>
+          <td><%= total_amount %></td>
+        </tr>
+      <% end -%>
+      <tr style="font-weight: bold;">
+        <td>TOTAL</td>
+        <td></td>
+        <td><%= @results.map(&:vehicle_boxes).sum %></td>
+        <td><%= @results.map(&:vehicle_kg).sum %></td>
+        <td><%= average(@results.map(&:rate)) %></td>
+        <td><%= @results.map(&:feed_amount).sum %></td>
+        <td><%= @results.map(&:calculated_amount).sum %></td>
+        <td><%= @results.map(&:amount).sum %></td>
+        <td><%= @results.map(&:balance_amount).sum %></td>
+        <td><%= @results.map(&:old_balance).sum + @results.map { |m| m.customer.current_balance.to_f }.sum %></td>
+        <td><%= (@results.map(&:old_balance).sum + @results.map { |m| m.customer.current_balance.to_f }.sum + @results.map(&:balance_amount).sum) %></td>
+        <td><%= (@results.map(&:total_paid).sum + @results.map(&:amount).sum) %></td>
+        <td><%= (@results.map(&:total).sum + @results.map(&:calculated_amount).sum + @results.map { |m| m.customer.current_balance.to_f }.sum) %></td>
+      </tr>
+    </tbody>
+  </table>

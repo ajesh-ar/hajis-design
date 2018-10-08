@@ -83,4 +83,8 @@ class AccountController < ApplicationController
 		customer_current_balance = CustomerAccount.where(customer_id: customer_account.customer_id).all.map(&:balance_amount).sum
 		customer_account.customer.update_attribute('old_balance', (customer_current_balance + customer_account.customer.current_balance))
 	end
+
+	def daily_report
+		@results = CustomerAccount.where(date: Date.parse(params[:date]))
+	end
 end
